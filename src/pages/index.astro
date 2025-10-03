@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import HeroQuemSou from '../components/HeroQuemSou.astro';
+import CarrosselPasseios from '../components/CarrosselPasseios.astro';
+import CarrosselPasseiosReceptivo from '../components/CarrosselPasseiosReceptivo.astro';
+import CarrosselCupons from '../components/CarrosselCupons.astro';
+import CarrosselDescontos from '../components/CarrosselDescontos.astro';
+import Depoimentos from '../components/Depoimentos.astro';
+import FormularioContato from '../components/FormularioContato.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Gramado Diferente- Turismo em Gramado e Canela">
+  <Header />
+  
+  <!-- Seção Hero -->
+  <HeroQuemSou />
+  
+  <!-- Seção de Ingressos e Atrações -->
+  <section id="ingressos">
+    <CarrosselPasseios />
+  </section>
+  
+  <!-- Seção de Passeios e Receptivo -->
+  <section id="passeios">
+    <CarrosselPasseiosReceptivo />
+  </section>
+  
+  <!-- Seção de Cupons de Desconto -->
+  <section id="cupons">
+    <CarrosselCupons />
+  </section>
+  
+  <!-- Seção de Descontos em Gramado e Canela -->
+  <section id="descontos">
+    <CarrosselDescontos />
+  </section>
+  
+  <!-- Seção Depoimentos -->
+  <section id="depoimentos">
+    <Depoimentos />
+  </section>
+  
+  <!-- Seção Contato -->
+  <section id="contato">
+    <FormularioContato />
+  </section>
+  
+  <!-- Footer -->
+  <Footer />
+</BaseLayout>

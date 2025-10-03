@@ -1,0 +1,365 @@
+---
+// Dados dos cupons de desconto
+const cupons = [
+  {
+    id: 1,
+    titulo: "Laçador de Ofertas",
+    subtitulo: "Aproveite as promoções",
+    categoria: "CUPOM DE DESCONTO",
+    imagem: "/images/cupons/lacador_logo.png",
+    cupom: "gramadodiferente",
+    descricao: "Aproveite as promoções exclusivas com nosso cupom de desconto especial",
+    tags: [
+      "Descontos exclusivos",
+      "Ofertas especiais",
+      "Válido por tempo limitado"
+    ],
+    cor: "bg-gradient-to-br from-blue-500 to-blue-700"
+  },
+  {
+    id: 3,
+    titulo: "Prime Gourmet",
+    subtitulo: "Compre em dobro",
+    categoria: "CUPOM DE DESCONTO",
+    imagem: "/images/cupons/prime_logo.jpg",
+    cupom: "gramadodiferente",
+    descricao: "Compre em dobro usando o Prime Gourmet com nosso cupom especial",
+    tags: [
+      "Dobro de benefícios",
+      "Experiência gourmet",
+      "Vantagens exclusivas"
+    ],
+    cor: "bg-gradient-to-br from-purple-500 to-purple-700"
+  }
+];
+---
+
+<section class="py-16 bg-gradient-to-br from-gray-50 to-orange-50 dark:from-gray-900 dark:to-orange-900">
+  <div class="container mx-auto px-4">
+    <!-- Cabeçalho da seção -->
+    <div class="text-center mb-12">
+      <div class="flex items-center justify-center mb-6">
+        <div class="h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent flex-1 max-w-xs"></div>
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mx-8">
+          Cupons de <span class="text-orange-600 dark:text-orange-400">Desconto</span>
+        </h2>
+        <div class="h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent flex-1 max-w-xs"></div>
+      </div>
+      <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+        Aproveite nossas ofertas exclusivas e economize em suas compras com nossos cupons especiais
+      </p>
+    </div>
+
+    <!-- Container do carrossel -->
+    <div class="relative overflow-hidden">
+      <div id="carousel-container-cupons" class="flex transition-transform duration-500 ease-in-out">
+        {cupons.map((cupom) => (
+          <div class="flex-none w-full sm:w-1/2 lg:w-1/3 px-3" data-id={cupom.id}>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group relative">
+              <!-- Fundo gradiente -->
+              <div class={`absolute inset-0 ${cupom.cor} opacity-10`}></div>
+              
+              <!-- Conteúdo do card -->
+              <div class="relative p-4 md:p-6">
+                <!-- Logo específica do cupom -->
+                <div class="flex justify-center mb-4">
+                  <img 
+                    src={cupom.imagem} 
+                    alt={cupom.titulo}
+                    class="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg"
+                  />
+                </div>
+
+                <!-- Header simplificado apenas com título e subtítulo -->
+                <div class="mb-4">
+                  <h3 class="font-bold text-lg md:text-xl text-gray-900 dark:text-white text-center">
+                    {cupom.titulo}
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm text-center">
+                    {cupom.subtitulo}
+                  </p>
+                </div>
+
+                <!-- Descrição -->
+                <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                  {cupom.descricao}
+                </p>
+
+                <!-- Tags de benefícios -->
+                <div class="space-y-2 mb-6">
+                  {cupom.tags.map((tag) => (
+                    <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                      <svg class="w-4 h-4 text-orange-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      </svg>
+                      {tag}
+                    </div>
+                  ))}
+                </div>
+
+                <!-- Cupom de desconto -->
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-6 border-2 border-dashed border-orange-300 dark:border-orange-600">
+                  <div class="text-center">
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">Código do cupom:</p>
+                    <div class="flex items-center justify-center space-x-2">
+                      <code class="text-lg font-bold text-orange-600 dark:text-orange-400 bg-white dark:bg-gray-800 px-3 py-1 rounded border">
+                        {cupom.cupom}
+                      </code>
+                      <button 
+                        class="copy-btn bg-orange-600 hover:bg-orange-700 text-white p-2 rounded transition-colors"
+                        data-cupom={cupom.cupom}
+                        title="Copiar cupom"
+                      >
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+                          <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Botão de ação -->
+                {cupom.id === 1 ? (
+                  <a 
+                    href="https://www.lacadordeofertas.com.br/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2 no-underline"
+                  >
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd" />
+                    </svg>
+                    <span>USAR CUPOM</span>
+                  </a>
+                ) : cupom.id === 3 ? (
+                  <a 
+                    href="https://primegourmetclub.com.br/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2 no-underline"
+                  >
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd" />
+                    </svg>
+                    <span>USAR CUPOM</span>
+                  </a>
+                ) : (
+                  <button class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd" />
+                    </svg>
+                    <span>USAR CUPOM</span>
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Controles de navegação -->
+      <button 
+        id="prev-btn-cupons"
+        class="absolute left-4 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 shadow-lg rounded-full p-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors z-10 hidden sm:block"
+      >
+        <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <button 
+        id="next-btn-cupons"
+        class="absolute right-4 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 shadow-lg rounded-full p-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors z-10 hidden sm:block"
+      >
+        <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Indicadores -->
+    <div class="flex justify-center mt-8 space-x-2" id="indicators-cupons">
+      <!-- Os indicadores serão gerados dinamicamente pelo JavaScript -->
+    </div>
+  </div>
+</section>
+
+<script>
+  // Código do carrossel de cupons
+  let currentSlideCupons = 0;
+  const containerCupons = document.getElementById('carousel-container-cupons');
+  const prevBtnCupons = document.getElementById('prev-btn-cupons');
+  const nextBtnCupons = document.getElementById('next-btn-cupons');
+  const indicatorsContainerCupons = document.getElementById('indicators-cupons');
+  
+  // Calcular número de slides baseado no tamanho da tela
+  function getSlidesPerViewCupons() {
+    if (window.innerWidth >= 1024) return 3; // lg: 3 cards
+    if (window.innerWidth >= 640) return 2;  // sm: 2 cards
+    return 1; // mobile: 1 card
+  }
+  
+  function getTotalSlidesCupons() {
+    const totalItems = containerCupons.children.length;
+    const slidesPerView = getSlidesPerViewCupons();
+    return Math.max(0, totalItems - slidesPerView + 1);
+  }
+  
+  function updateCarouselCupons() {
+    const slideWidth = 100 / getSlidesPerViewCupons();
+    const translateX = currentSlideCupons * slideWidth;
+    containerCupons.style.transform = `translateX(-${translateX}%)`;
+    
+    // Atualizar botões
+    const totalSlides = getTotalSlidesCupons();
+    prevBtnCupons.style.opacity = currentSlideCupons === 0 ? '0.5' : '1';
+    nextBtnCupons.style.opacity = currentSlideCupons >= totalSlides - 1 ? '0.5' : '1';
+    
+    // Atualizar indicadores
+    updateIndicatorsCupons();
+  }
+  
+  function createIndicatorsCupons() {
+    const totalSlides = getTotalSlidesCupons();
+    indicatorsContainerCupons.innerHTML = '';
+    
+    for (let i = 0; i < totalSlides; i++) {
+      const indicator = document.createElement('button');
+      indicator.className = `w-2 h-2 rounded-full transition-colors ${
+        i === currentSlideCupons ? 'bg-orange-600' : 'bg-gray-300'
+      }`;
+      indicator.addEventListener('click', () => {
+        currentSlideCupons = i;
+        updateCarouselCupons();
+      });
+      indicatorsContainerCupons.appendChild(indicator);
+    }
+  }
+  
+  function updateIndicatorsCupons() {
+    const indicators = indicatorsContainerCupons.children;
+    for (let i = 0; i < indicators.length; i++) {
+      indicators[i].className = `w-2 h-2 rounded-full transition-colors ${
+        i === currentSlideCupons ? 'bg-orange-600' : 'bg-gray-300'
+      }`;
+    }
+  }
+  
+  // Navegação
+  function nextSlideCupons() {
+    const totalSlides = getTotalSlidesCupons();
+    if (currentSlideCupons < totalSlides - 1) {
+      currentSlideCupons++;
+      updateCarouselCupons();
+    }
+  }
+  
+  function prevSlideCupons() {
+    if (currentSlideCupons > 0) {
+      currentSlideCupons--;
+      updateCarouselCupons();
+    }
+  }
+  
+  // Event listeners
+  nextBtnCupons?.addEventListener('click', nextSlideCupons);
+  prevBtnCupons?.addEventListener('click', prevSlideCupons);
+  
+  // Funcionalidade de copiar cupom
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const cupom = btn.getAttribute('data-cupom');
+      
+      try {
+        await navigator.clipboard.writeText(cupom);
+        
+        // Feedback visual
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = `
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+        `;
+        btn.classList.add('bg-green-600');
+        btn.classList.remove('bg-orange-600');
+        
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.classList.remove('bg-green-600');
+          btn.classList.add('bg-orange-600');
+        }, 2000);
+        
+      } catch (err) {
+        console.error('Erro ao copiar cupom:', err);
+        alert('Cupom copiado: ' + cupom);
+      }
+    });
+  });
+  
+  // Suporte a touch/swipe no mobile
+  let startXCupons = 0;
+  let isDraggingCupons = false;
+  
+  containerCupons.addEventListener('touchstart', (e) => {
+    startXCupons = e.touches[0].clientX;
+    isDraggingCupons = true;
+  });
+  
+  containerCupons.addEventListener('touchend', (e) => {
+    if (!isDraggingCupons) return;
+    
+    const endX = e.changedTouches[0].clientX;
+    const diffX = startXCupons - endX;
+    
+    if (Math.abs(diffX) > 50) {
+      if (diffX > 0) {
+        nextSlideCupons();
+      } else {
+        prevSlideCupons();
+      }
+    }
+    
+    isDraggingCupons = false;
+  });
+  
+  // Auto-play
+  let autoPlayIntervalCupons;
+  
+  function startAutoPlayCupons() {
+    autoPlayIntervalCupons = setInterval(() => {
+      const totalSlides = getTotalSlidesCupons();
+      if (currentSlideCupons >= totalSlides - 1) {
+        currentSlideCupons = 0;
+      } else {
+        currentSlideCupons++;
+      }
+      updateCarouselCupons();
+    }, 4000);
+  }
+  
+  function stopAutoPlayCupons() {
+    clearInterval(autoPlayIntervalCupons);
+  }
+  
+  // Pausar auto-play durante interação
+  containerCupons.addEventListener('mouseenter', stopAutoPlayCupons);
+  containerCupons.addEventListener('mouseleave', startAutoPlayCupons);
+  containerCupons.addEventListener('touchstart', stopAutoPlayCupons);
+  containerCupons.addEventListener('touchend', () => {
+    setTimeout(startAutoPlayCupons, 3000);
+  });
+  
+  // Atualizar no redimensionamento da tela
+  window.addEventListener('resize', () => {
+    currentSlideCupons = 0;
+    updateCarouselCupons();
+    createIndicatorsCupons();
+  });
+  
+  // Inicializar carrossel
+  updateCarouselCupons();
+  createIndicatorsCupons();
+  startAutoPlayCupons();
+</script>

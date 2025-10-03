@@ -1,0 +1,678 @@
+---
+// Remover todo o array todosPasseios daqui - agora será definido no JavaScript
+---
+
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-neutral-50/70 dark:bg-secondary-900/70 backdrop-blur-md border-b border-neutral-200/30 dark:border-secondary-700/30">
+  <div class="container mx-auto px-4">
+    <nav class="flex items-center justify-between h-20 lg:h-24" aria-label="Navegação principal">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-2 group" aria-label="Página inicial">
+        <img 
+          src="/images/logo_gd_p.png" 
+          alt="Gramado Diferente" 
+          class="h-10 w-auto lg:h-12 transition-transform group-hover:scale-105 object-contain"
+          width="120"
+          height="40"
+        />
+      </a>
+      
+      <!-- Search Bar - Desktop -->
+      <div class="hidden lg:flex flex-1 max-w-md mx-4 relative">
+        <div class="relative w-full">
+          <input 
+            type="text" 
+            id="search-input"
+            placeholder="Buscar passeios..."
+            class="w-full pl-8 pr-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200"
+            autocomplete="off"
+          />
+          <div class="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+          
+          <!-- Search Results Dropdown -->
+          <div id="search-results" class="absolute top-full left-0 right-0 mt-1 bg-neutral-50 border border-neutral-200 rounded-lg shadow-lg max-h-80 overflow-y-auto hidden z-50">
+            <!-- Results will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex items-center space-x-6" role="menubar">
+        <li role="none">
+          <a 
+            href="/nossa-historia" 
+            class="text-secondary-700 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
+            role="menuitem"
+          >
+            Nossa História
+          </a>
+        </li>
+        <li role="none">
+          <a 
+            href="/blog" 
+            class="text-secondary-700 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200"
+            role="menuitem"
+          >
+            Blog
+          </a>
+        </li>
+        <li role="none" class="relative group">
+          <button 
+            class="text-secondary-700 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200 flex items-center"
+            role="menuitem"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Indicações
+            <svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <!-- Dropdown Menu -->
+          <div class="absolute top-full left-0 mt-2 w-64 bg-neutral-50 dark:bg-secondary-800 rounded-lg shadow-xl border border-neutral-200 dark:border-secondary-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="py-2">
+              <a href="/ingressos" class="block px-4 py-3 text-secondary-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-secondary-700 hover:text-primary-600 transition-colors">
+                <div class="font-medium">Ingressos e Atrações</div>
+                <div class="text-sm text-neutral-500 dark:text-neutral-400">Gramado e Canela</div>
+              </a>
+              <a href="/passeios" class="block px-4 py-3 text-secondary-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-secondary-700 hover:text-primary-600 transition-colors">
+                <div class="font-medium">Passeios e Receptivo</div>
+                <div class="text-sm text-neutral-500 dark:text-neutral-400">Tours personalizados</div>
+              </a>
+              <a href="#cupons" class="block px-4 py-3 text-secondary-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-secondary-700 hover:text-primary-600 transition-colors">
+                <div class="font-medium">Cupons de Desconto</div>
+                <div class="text-sm text-neutral-500 dark:text-neutral-400">Ofertas especiais</div>
+              </a>
+              <a href="#descontos" class="block px-4 py-3 text-secondary-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-secondary-700 hover:text-primary-600 transition-colors">
+                <div class="font-medium">Descontos Especiais</div>
+                <div class="text-sm text-neutral-500 dark:text-neutral-400">Promoções exclusivas</div>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li role="none">
+          <a 
+            href="#depoimentos" 
+            class="text-secondary-700 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200 scroll-smooth"
+            role="menuitem"
+          >
+            Depoimentos
+          </a>
+        </li>
+        <li role="none">
+          <a 
+            href="#contato" 
+            class="text-secondary-700 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200 scroll-smooth"
+            role="menuitem"
+          >
+            Contato
+          </a>
+        </li>
+      </ul>
+      
+      <!-- Mobile Controls -->
+      <div class="md:hidden flex items-center space-x-2">
+        <!-- Mobile Search Button -->
+        <button 
+          id="mobile-search-button"
+          class="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-secondary-800 transition-colors"
+          aria-label="Abrir busca"
+        >
+          <svg class="w-6 h-6 text-secondary-700 dark:text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </button>
+        
+        <!-- Mobile Menu Button -->
+        <button 
+          id="mobile-menu-button"
+          class="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-secondary-800 transition-colors"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg class="w-6 h-6 text-secondary-700 dark:text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      </button>
+    </nav>
+    
+    <!-- Mobile Search Bar -->
+    <div id="mobile-search" class="lg:hidden hidden px-4 pb-4">
+      <div class="relative">
+        <input 
+          type="text" 
+          id="mobile-search-input"
+          placeholder="Buscar passeios..."
+          class="w-full pl-8 pr-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200"
+          autocomplete="off"
+        />
+        <div class="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
+          <svg class="h-5 w-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+        
+        <!-- Mobile Search Results -->
+        <div id="mobile-search-results" class="absolute top-full left-0 right-0 mt-1 bg-neutral-50 border border-neutral-200 rounded-lg shadow-lg max-h-60 overflow-y-auto hidden z-50">
+          <!-- Results will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-neutral-50 border-t border-neutral-200">
+      <div class="px-4 py-4 space-y-4">
+        <!-- Nossa História -->
+        <a href="/nossa-historia" class="block text-secondary-700 hover:text-primary-600 transition-colors font-medium mobile-menu-link">Nossa História</a>
+        <!-- Blog -->
+        <a href="/blog" class="block text-secondary-700 hover:text-primary-600 transition-colors font-medium mobile-menu-link">Blog</a>
+        
+        <!-- Mobile Services Dropdown -->
+        <div class="space-y-2">
+          <button id="mobile-services-toggle" class="flex items-center justify-between w-full text-secondary-700 hover:text-primary-600 transition-colors font-medium">
+            Indicações
+            <svg class="w-4 h-4 transition-transform text-secondary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id="mobile-services-menu" class="hidden pl-4 space-y-2">
+            <a href="#ingressos" class="block text-secondary-600 hover:text-primary-600 transition-colors mobile-menu-link">Ingressos e Atrações</a>
+            <a href="#passeios" class="block text-secondary-600 hover:text-primary-600 transition-colors mobile-menu-link">Passeios e Receptivo</a>
+            <a href="#cupons" class="block text-secondary-600 hover:text-primary-600 transition-colors mobile-menu-link">Cupons de Desconto</a>
+            <a href="#descontos" class="block text-secondary-600 hover:text-primary-600 transition-colors mobile-menu-link">Descontos Especiais</a>
+          </div>
+        </div>
+        
+        <a href="#depoimentos" class="block text-secondary-700 hover:text-primary-600 transition-colors font-medium mobile-menu-link">Depoimentos</a>
+        <a href="#contato" class="block text-secondary-700 hover:text-primary-600 transition-colors font-medium mobile-menu-link">Contato</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Dados dos passeios para busca (agora definido diretamente no JavaScript)
+  const todosPasseios = [
+    // Ingressos e Atrações
+    {
+      id: 1,
+      titulo: "Cristais de Gramado",
+      subtitulo: "Ingresso",
+      categoria: "INGRESSOS E ATRAÇÕES",
+      tipo: "ingressos",
+      slug: "cristais-de-gramado"
+    },
+    {
+      id: 2,
+      titulo: "Grupo Dreams",
+      subtitulo: "Passaporte para 7 Atrações",
+      categoria: "INGRESSOS E ATRAÇÕES",
+      tipo: "ingressos",
+      slug: "grupo-dreams"
+    },
+    {
+      id: 4,
+      titulo: "Parque Terra Mágica Florybal",
+      subtitulo: "Parque Temático",
+      categoria: "INGRESSOS E ATRAÇÕES",
+      tipo: "ingressos",
+      slug: "terra-magica-florybal"
+    },
+    {
+      id: 7,
+      titulo: "Mini Mundo",
+      subtitulo: "Ingresso",
+      categoria: "INGRESSOS E ATRAÇÕES",
+      tipo: "ingressos",
+      slug: "mini-mundo"
+    },
+    {
+      id: 8,
+      titulo: "Alpen Park",
+      subtitulo: "Ingresso",
+      categoria: "INGRESSOS E ATRAÇÕES",
+      tipo: "ingressos",
+      slug: "alpen-park"
+    },
+    {
+      id: 12,
+      titulo: "Parque Space Adventure I",
+      subtitulo: "Parque Temático",
+      categoria: "INGRESSOS E ATRAÇÕES",
+      tipo: "ingressos",
+      slug: "parque-space-adventure"
+    },
+    {
+      id: 16,
+      titulo: "Parque Vila da Mônica",
+      subtitulo: "Parque Temático",
+      categoria: "INGRESSOS E ATRAÇÕES",
+      tipo: "ingressos",
+      slug: "parque-vila-da-monica"
+    },
+    // Passeios e Receptivo - apenas os 3 da imagem
+    {
+      id: 5,
+      titulo: "Transfer Ida e Volta (POA ou Caxias/ Gramado ou Canela)",
+      subtitulo: "Transporte Privativo",
+      categoria: "RECEPTIVO",
+      tipo: "passeios",
+      slug: "transfer-privativo"
+    },
+    {
+      id: 6,
+      titulo: "Tour Uva e Vinho + Passeio de Maria Fumaça + Epopeia + Almoço (Coletivo)",
+      subtitulo: "Com Trem Maria Fumaça e Épopeia",
+      categoria: "PASSEIOS",
+      tipo: "passeios",
+      slug: "tour-trem-vinho-maria-fumaca"
+    },
+    {
+      id: 14,
+      titulo: "Ensaio Fotográfico Gramado e Canela",
+      subtitulo: "Passeio Privativo",
+      categoria: "PASSEIOS PRIVATIVOS",
+      tipo: "passeios",
+      slug: "ensaio-fotografico-gramado-canela"
+    },
+    // Cupons de Desconto
+    {
+      id: 101,
+      titulo: "Laçador de Ofertas",
+      subtitulo: "Aproveite as promoções",
+      categoria: "CUPOM DE DESCONTO",
+      tipo: "cupons",
+      slug: "#cupons"
+    },
+    {
+      id: 102,
+      titulo: "Prime Gourmet",
+      subtitulo: "Compre em dobro",
+      categoria: "CUPOM DE DESCONTO",
+      tipo: "cupons",
+      slug: "#cupons"
+    },
+    // Descontos Especiais
+    {
+      id: 201,
+      titulo: "O GRANDE DESFILE DE NATAL",
+      subtitulo: "Natal Luz 2025",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-desfilede-natal-natal-luz?bookingAgency=4795"
+    },
+    {
+      id: 202,
+      titulo: "NATIVITATEN (SHOW NO LAGO)",
+      subtitulo: "Natal Luz 2025",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-desfilede-natal-natal-luz?bookingAgency=4795"
+    },
+    {
+      id: 203,
+      titulo: "RF VISION FONDUE",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/restaurante-giratorio-rf-vision?bookingAgency=4795"
+    },
+    {
+      id: 204,
+      titulo: "SNOWLAND",
+      subtitulo: "Parques",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-snowland-gramado?bookingAgency=4795"
+    },
+    {
+      id: 205,
+      titulo: "MATRIA PARQUE DE FLORES",
+      subtitulo: "Parques",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-matria-parque-de-flores?bookingAgency=4795"
+    },
+    {
+      id: 206,
+      titulo: "RASEN BRASA SEQUÊNCIA PARRILLHEIRA",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-rasen-brasa-sequencia-parrillheira?bookingAgency=4795"
+    },
+    {
+      id: 207,
+      titulo: "VILA DA MÔNICA",
+      subtitulo: "Parques",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-vila-da-monica?bookingAgency=4795"
+    },
+    {
+      id: 208,
+      titulo: "PASSO DO LONTRA",
+      subtitulo: "Parques",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-passo-do-lontra?bookingAgency=4795"
+    },
+    {
+      id: 209,
+      titulo: "CERVEJARIA FAROL",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-cervejaria-farol?bookingAgency=4795"
+    },
+    {
+      id: 210,
+      titulo: "FONDUE BELLE ÉPOQUE",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-fondue-belle-epoque?bookingAgency=4795"
+    },
+    {
+      id: 211,
+      titulo: "RASEN BRASA FONDUE",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-rasen-brasa-fondue?bookingAgency=4795"
+    },
+    {
+      id: 212,
+      titulo: "CAFÉ COLONIAL BELLA NONNA",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-cafe-colonial-bella-nonna?bookingAgency=4795"
+    },
+    {
+      id: 213,
+      titulo: "CHÁ REAL NO CHOCOLAND",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-cha-real-no-chocoland?bookingAgency=4795"
+    },
+    {
+      id: 214,
+      titulo: "REINO DA BOÊMIA PIZZAS",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-rodizio-de-pizzas-em-gramado.-rodizio-reino-da-boemia?bookingAgency=4795"
+    },
+    {
+      id: 215,
+      titulo: "REINO DA BOÊMIA BUFFET",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-buffet-livre-em-gramado.-almoco-com-buffet-livre-e-churrasco-boemio?bookingAgency=4795"
+    },
+    {
+      id: 216,
+      titulo: "PIZZARIA LA BELLA NOTTE",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-la-bella-notte?bookingAgency=4795"
+    },
+    {
+      id: 217,
+      titulo: "PALACE CAFÉ COLONIAL",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-palace-cafe-colonial?bookingAgency=4795"
+    },
+    {
+      id: 218,
+      titulo: "JANTAR CAÇA AO TESOURO CRIAMIGOS",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-jantar-caca-ao-tesouro-criamigos?bookingAgency=4795"
+    },
+    {
+      id: 219,
+      titulo: "CAFÉ DA MANHÃ NO HOTEL CRIAMIGOS",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-hora-do-cafe-no-hote-criamigos?bookingAgency=4795"
+    },
+    {
+      id: 220,
+      titulo: "REINO DA BOÊMIA FONDUE",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-sequencia-de-fondue-em-gramado.-reino-da-boemia-restaurante-fondue?bookingAgency=4795"
+    },
+    {
+      id: 221,
+      titulo: "BUFFET DE SOPAS CAFÉ DA BANCA",
+      subtitulo: "Restaurantes",
+      categoria: "DESCONTOS ESPECIAIS",
+      tipo: "descontos",
+      slug: "#descontos",
+      link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/buffet-de-sopas-no-cafe-da-banca?bookingAgency=4795"
+    }
+  ];
+
+  // Header scroll behavior
+  const header = document.getElementById('header');
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+  const mobileServicesToggle = document.getElementById('mobile-services-toggle');
+  const mobileServicesMenu = document.getElementById('mobile-services-menu');
+  const mobileSearchButton = document.getElementById('mobile-search-button');
+  const mobileSearch = document.getElementById('mobile-search');
+  const searchInput = document.getElementById('search-input');
+  const mobileSearchInput = document.getElementById('mobile-search-input');
+  const searchResults = document.getElementById('search-results');
+  const mobileSearchResults = document.getElementById('mobile-search-results');
+  
+  let isMenuOpen = false;
+  let isServicesOpen = false;
+  let isMobileSearchOpen = false;
+  
+  // Search functionality
+  function performSearch(query, resultsContainer) {
+    console.log('Performing search for:', query); // Debug
+    
+    if (!query.trim()) {
+      resultsContainer.classList.add('hidden');
+      return;
+    }
+    
+    const filteredPasseios = todosPasseios.filter(passeio => 
+      passeio.titulo.toLowerCase().includes(query.toLowerCase()) ||
+      (passeio.subtitulo && passeio.subtitulo.toLowerCase().includes(query.toLowerCase()))
+    );
+    
+    console.log('Filtered results:', filteredPasseios); // Debug
+    
+    if (filteredPasseios.length === 0) {
+      resultsContainer.innerHTML = `
+        <div class="p-4 text-gray-500 text-center">
+          Nenhum passeio encontrado para "${query}"
+        </div>
+      `;
+    } else {
+      resultsContainer.innerHTML = filteredPasseios.map(passeio => {
+        // Para descontos especiais, usar o link externo
+        if (passeio.tipo === 'descontos' && passeio.link) {
+          return `
+            <a href="${passeio.link}" target="_blank" class="block p-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0">
+              <div class="font-medium text-gray-800">${passeio.titulo}</div>
+              <div class="text-sm text-gray-600">${passeio.subtitulo || ''}</div>
+              <div class="text-xs text-blue-600 mt-1">${passeio.categoria}</div>
+            </a>
+          `;
+        } else {
+          // Para outros tipos, usar o slug interno
+          const href = `/${passeio.slug}`;
+          return `
+            <a href="${href}" class="block p-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0">
+              <div class="font-medium text-gray-800">${passeio.titulo}</div>
+              <div class="text-sm text-gray-600">${passeio.subtitulo || ''}</div>
+              <div class="text-xs text-blue-600 mt-1">${passeio.categoria}</div>
+            </a>
+          `;
+        }
+      }).join('');
+    }
+    
+    resultsContainer.classList.remove('hidden');
+  }
+  
+  // Desktop search
+  searchInput?.addEventListener('input', (e) => {
+    performSearch(e.target.value, searchResults);
+  });
+  
+  // Mobile search
+  mobileSearchInput?.addEventListener('input', (e) => {
+    performSearch(e.target.value, mobileSearchResults);
+  });
+  
+  // Hide search results when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#search-input') && !e.target.closest('#search-results')) {
+      searchResults?.classList.add('hidden');
+    }
+    if (!e.target.closest('#mobile-search-input') && !e.target.closest('#mobile-search-results')) {
+      mobileSearchResults?.classList.add('hidden');
+    }
+  });
+  
+  // Mobile search toggle
+  mobileSearchButton?.addEventListener('click', () => {
+    isMobileSearchOpen = !isMobileSearchOpen;
+    
+    if (isMobileSearchOpen) {
+      mobileSearch?.classList.remove('hidden');
+      mobileSearchInput?.focus();
+    } else {
+      mobileSearch?.classList.add('hidden');
+      mobileSearchResults?.classList.add('hidden');
+    }
+  });
+  
+  // Scroll behavior
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+  
+  // Mobile menu toggle
+  mobileMenuButton?.addEventListener('click', () => {
+    isMenuOpen = !isMenuOpen;
+    
+    if (isMenuOpen) {
+      mobileMenu?.classList.remove('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'true');
+    } else {
+      mobileMenu?.classList.add('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      // Reset services menu when closing main menu
+      isServicesOpen = false;
+      mobileServicesMenu?.classList.add('hidden');
+      const arrow = mobileServicesToggle?.querySelector('svg');
+      arrow?.classList.remove('rotate-180');
+    }
+  });
+  
+  // Mobile services dropdown toggle
+  mobileServicesToggle?.addEventListener('click', () => {
+    isServicesOpen = !isServicesOpen;
+    const arrow = mobileServicesToggle.querySelector('svg');
+    
+    if (isServicesOpen) {
+      mobileServicesMenu?.classList.remove('hidden');
+      arrow?.classList.add('rotate-180');
+    } else {
+      mobileServicesMenu?.classList.add('hidden');
+      arrow?.classList.remove('rotate-180');
+    }
+  });
+  
+  // Close mobile menu when clicking on links
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      isMenuOpen = false;
+      isServicesOpen = false;
+      mobileMenu?.classList.add('hidden');
+      mobileServicesMenu?.classList.add('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      const arrow = mobileServicesToggle?.querySelector('svg');
+      arrow?.classList.remove('rotate-180');
+    });
+  });
+  
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      
+      const href = this instanceof HTMLElement ? this.getAttribute('href') : null;
+      const target = href ? document.querySelector(href) : null;
+      
+      if (target) {
+        const headerElement = document.getElementById('header');
+        const headerHeight = headerElement?.offsetHeight || 0;
+        const targetPosition = target.offsetTop - headerHeight - 20;
+        
+        window.scrollTo({
+          top: Math.max(0, targetPosition),
+          behavior: 'smooth'
+        });
+        
+        // Hide search results after navigation
+        searchResults?.classList.add('hidden');
+        mobileSearchResults?.classList.add('hidden');
+      }
+    });
+  });
+</script>
+
+<style>
+  .scrolled {
+    @apply h-16 lg:h-20;
+  }
+</style>

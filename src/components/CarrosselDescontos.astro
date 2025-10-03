@@ -1,0 +1,444 @@
+---
+// Todos os descontos misturados em uma única lista
+const todosDescontos = [
+  { nome: "O GRANDE DESFILE DE NATAL", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-desfilede-natal-natal-luz?bookingAgency=4795", categoria: "Natal Luz 2025" },
+  { nome: "NATIVITATEN (SHOW NO LAGO)", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-desfilede-natal-natal-luz?bookingAgency=4795", categoria: "Natal Luz 2025" },
+  { nome: "RF VISION FONDUE", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/restaurante-giratorio-rf-vision?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "SNOWLAND", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-snowland-gramado?bookingAgency=4795", categoria: "Parques" },
+  { nome: "MATRIA PARQUE DE FLORES", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-matria-parque-de-flores?bookingAgency=4795", categoria: "Parques" },
+  { nome: "RASEN BRASA SEQUÊNCIA PARRILLHEIRA", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-rasen-brasa-sequencia-parrillheira?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "VILA DA MÔNICA", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-vila-da-monica?bookingAgency=4795", categoria: "Parques" },
+  { nome: "PASSO DO LONTRA", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-passo-do-lontra?bookingAgency=4795", categoria: "Parques" },
+  { nome: "CERVEJARIA FAROL", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-cervejaria-farol?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "FONDUE BELLE ÉPOQUE", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-fondue-belle-epoque?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "RASEN BRASA FONDUE", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-rasen-brasa-fondue?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "CAFÉ COLONIAL BELLA NONNA", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-cafe-colonial-bella-nonna?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "CHÁ REAL NO CHOCOLAND", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-cha-real-no-chocoland?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "REINO DA BOÊMIA PIZZAS", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-rodizio-de-pizzas-em-gramado.-rodizio-reino-da-boemia?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "REINO DA BOÊMIA BUFFET", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-buffet-livre-em-gramado.-almoco-com-buffet-livre-e-churrasco-boemio?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "PIZZARIA LA BELLA NOTTE", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-la-bella-notte?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "PALACE CAFÉ COLONIAL", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-palace-cafe-colonial?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "JANTAR CAÇA AO TESOURO CRIAMIGOS", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-jantar-caca-ao-tesouro-criamigos?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "CAFÉ DA MANHÃ NO HOTEL CRIAMIGOS", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-hora-do-cafe-no-hote-criamigos?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "REINO DA BOÊMIA FONDUE", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-sequencia-de-fondue-em-gramado.-reino-da-boemia-restaurante-fondue?bookingAgency=4795", categoria: "Restaurantes" },
+  { nome: "BUFFET DE SOPAS CAFÉ DA BANCA", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/buffet-de-sopas-no-cafe-da-banca?bookingAgency=4795", categoria: "Restaurantes" }
+];
+---
+
+<section class="relative pt-20 lg:pt-10">
+  <!-- Cabeçalho da seção -->
+  <div class="text-center mb-12">
+    <div class="flex items-center justify-center mb-6">
+      <div class="h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent flex-1 max-w-xs"></div>
+      <h2 class="text-3xl lg:text-4xl font-bold text-secondary-900 dark:text-neutral-100 mx-8">
+        Descontos <span class="text-primary-600 dark:text-primary-400">Especiais</span>
+      </h2>
+      <div class="h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent flex-1 max-w-xs"></div>
+    </div>
+    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+      Aproveite ofertas exclusivas em restaurantes e parques de Gramado
+    </p>
+    
+    <!-- Filtros de categoria -->
+    <div class="flex flex-wrap justify-center gap-3 mb-8">
+      <span class="text-secondary-700 dark:text-neutral-300 font-medium">Filtrar por:</span>
+      <button 
+        id="filter-todos" 
+        class="filter-btn px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium hover:bg-primary-200 transition-colors active"
+        data-filter="todos"
+      >
+        Todos
+      </button>
+      <button 
+        id="filter-natal" 
+        class="filter-btn px-4 py-2 bg-neutral-100 text-secondary-700 rounded-full text-sm font-medium hover:bg-neutral-200 transition-colors dark:bg-secondary-700 dark:text-neutral-300"
+        data-filter="natal-luz-2025"
+      >
+        🎄 Natal Luz 2025
+      </button>
+      <button 
+        id="filter-restaurantes" 
+        class="filter-btn px-4 py-2 bg-neutral-100 text-secondary-700 rounded-full text-sm font-medium hover:bg-neutral-200 transition-colors dark:bg-secondary-700 dark:text-neutral-300"
+        data-filter="restaurantes"
+      >
+        Restaurantes
+      </button>
+      <button 
+        id="filter-parques" 
+        class="filter-btn px-4 py-2 bg-neutral-100 text-secondary-700 rounded-full text-sm font-medium hover:bg-neutral-200 transition-colors dark:bg-secondary-700 dark:text-neutral-300"
+        data-filter="parques"
+      >
+        Parques
+      </button>
+    </div>
+  </div>
+
+  <!-- Container do carrossel -->
+  <div class="relative overflow-hidden">
+    <div class="relative">
+      <div id="carousel-container-descontos" class="flex transition-transform duration-500 ease-in-out">
+      {todosDescontos.map((desconto) => (
+        <div class="flex-none w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 px-3" data-categoria={desconto.categoria.toLowerCase().replace(/\s+/g, '-')}>
+          <div class="bg-neutral-50 dark:bg-secondary-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer" onclick={`window.open('${desconto.link}', '_blank')`}>
+            <div class="relative h-48 overflow-hidden">
+              <!-- Placeholder para imagem -->
+              <div class="w-full h-full bg-gradient-to-br from-blue-100 to-green-100 dark:from-slate-700 dark:to-slate-600 flex items-center justify-center">
+                <div class="text-center">
+                  <svg class="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Imagem em breve</p>
+                </div>
+              </div>
+              <div class="absolute top-3 left-3">
+                <span class="bg-primary-600 text-white text-xs font-medium px-2 py-1 rounded-full">
+                  {desconto.categoria}
+                </span>
+              </div>
+              <div class="absolute top-3 right-3">
+                <span class="bg-green-600 text-white text-xs font-medium px-2 py-1 rounded-full">
+                  Desconto Especial
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="font-bold text-lg text-secondary-900 dark:text-neutral-100 mb-1">
+                {desconto.nome}
+              </h3>
+              <p class="text-secondary-600 dark:text-neutral-400 text-sm mb-4">
+                Oferta exclusiva disponível
+              </p>
+              <div class="space-y-2 mb-6">
+                <div class="flex items-center text-sm text-secondary-600 dark:text-neutral-400">
+                  <svg class="w-4 h-4 text-primary-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  Desconto exclusivo aplicado
+                </div>
+                <div class="flex items-center text-sm text-secondary-600 dark:text-neutral-400">
+                  <svg class="w-4 h-4 text-primary-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  Válido por tempo limitado
+                </div>
+              </div>
+              <div class="border-t border-neutral-200 dark:border-secondary-700 pt-4">
+                <button 
+                  onclick={`event.stopPropagation(); window.open('${desconto.link}', '_blank')`}
+                  class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+                >
+                  APROVEITAR DESCONTO
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+      </div>
+
+      <!-- Controles de navegação -->
+      <button 
+        id="prev-btn-descontos"
+        class="absolute left-4 top-1/2 -translate-y-1/2 bg-neutral-50 dark:bg-secondary-800 shadow-lg rounded-full p-3 hover:bg-neutral-100 dark:hover:bg-secondary-700 transition-colors z-10 hidden sm:block"
+      >
+        <svg class="w-6 h-6 text-secondary-600 dark:text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <button 
+        id="next-btn-descontos"
+        class="absolute right-4 top-1/2 -translate-y-1/2 bg-neutral-50 dark:bg-secondary-800 shadow-lg rounded-full p-3 hover:bg-neutral-100 dark:hover:bg-secondary-700 transition-colors z-10 hidden sm:block"
+      >
+        <svg class="w-6 h-6 text-secondary-600 dark:text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Indicadores -->
+  <div class="flex justify-center mt-8 space-x-2" id="indicators-descontos">
+    <!-- Os indicadores serão gerados dinamicamente pelo JavaScript -->
+  </div>
+</section>
+
+<script define:vars={{ todosDescontos }}>
+  // Dados dos descontos para busca e filtros
+  let filteredDescontos = [...todosDescontos];
+  let currentSlide = 0;
+  
+  // Elementos DOM
+  const container = document.getElementById('carousel-container-descontos');
+  const prevBtn = document.getElementById('prev-btn-descontos');
+  const nextBtn = document.getElementById('next-btn-descontos');
+  const indicatorsContainer = document.getElementById('indicators-descontos');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  
+  // Função para criar HTML do card
+  function createCardHTML(desconto) {
+    return `
+      <div class="flex-none w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 px-3" data-categoria="${desconto.categoria.toLowerCase().replace(/\s+/g, '-')}">
+        <div class="bg-neutral-50 dark:bg-secondary-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer" onclick="window.open('${desconto.link}', '_blank')">
+          <div class="relative h-48 overflow-hidden">
+            <div class="w-full h-full bg-gradient-to-br from-blue-100 to-green-100 dark:from-slate-700 dark:to-slate-600 flex items-center justify-center">
+              <div class="text-center">
+                <svg class="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z"></path>
+                </svg>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Imagem em breve</p>
+              </div>
+            </div>
+            <div class="absolute top-3 left-3">
+              <span class="bg-primary-600 text-white text-xs font-medium px-2 py-1 rounded-full">
+                ${desconto.categoria}
+              </span>
+            </div>
+            <div class="absolute top-3 right-3">
+              <span class="bg-green-600 text-white text-xs font-medium px-2 py-1 rounded-full">
+                Desconto Especial
+              </span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-lg text-secondary-900 dark:text-neutral-100 mb-1">
+              ${desconto.nome}
+            </h3>
+            <p class="text-secondary-600 dark:text-neutral-400 text-sm mb-4">
+              Oferta exclusiva disponível
+            </p>
+            <div class="space-y-2 mb-6">
+              <div class="flex items-center text-sm text-secondary-600 dark:text-neutral-400">
+                <svg class="w-4 h-4 text-primary-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                Desconto exclusivo aplicado
+              </div>
+              <div class="flex items-center text-sm text-secondary-600 dark:text-neutral-400">
+                <svg class="w-4 h-4 text-primary-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                Válido por tempo limitado
+              </div>
+            </div>
+            <div class="border-t border-neutral-200 dark:border-secondary-700 pt-4">
+              <button 
+                onclick="event.stopPropagation(); window.open('${desconto.link}', '_blank')"
+                class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
+              >
+                APROVEITAR DESCONTO
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  
+  // Função para atualizar o carrossel com novos dados
+  function updateCarouselContent(descontos) {
+    container.innerHTML = descontos.map(desconto => createCardHTML(desconto)).join('');
+    filteredDescontos = descontos;
+    currentSlide = 0;
+    updateCarousel();
+  }
+  
+  // Calcular número de slides baseado no tamanho da tela
+  function getSlidesPerView() {
+    if (window.innerWidth >= 1280) return 4; // xl
+    if (window.innerWidth >= 1024) return 3; // lg
+    if (window.innerWidth >= 640) return 2;  // sm
+    return 1; // mobile
+  }
+  
+  function getTotalSlides() {
+    const totalItems = filteredDescontos.length;
+    const slidesPerView = getSlidesPerView();
+    return Math.max(0, totalItems - slidesPerView + 1);
+  }
+  
+  function updateCarousel() {
+    const slideWidth = 100 / getSlidesPerView();
+    const translateX = currentSlide * slideWidth;
+    container.style.transform = `translateX(-${translateX}%)`;
+    
+    // Atualizar botões
+    const totalSlides = getTotalSlides();
+    prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
+    nextBtn.style.opacity = currentSlide >= totalSlides - 1 ? '0.5' : '1';
+    
+    // Atualizar indicadores
+    updateIndicators();
+  }
+  
+  function createIndicators() {
+    const totalSlides = getTotalSlides();
+    indicatorsContainer.innerHTML = '';
+    
+    for (let i = 0; i < totalSlides; i++) {
+      const indicator = document.createElement('button');
+      indicator.className = `w-2 h-2 rounded-full transition-colors ${
+        i === currentSlide ? 'bg-primary-600' : 'bg-neutral-300'
+      }`;
+      indicator.addEventListener('click', () => {
+        currentSlide = i;
+        updateCarousel();
+      });
+      indicatorsContainer.appendChild(indicator);
+    }
+  }
+  
+  function updateIndicators() {
+    const indicators = indicatorsContainer.children;
+    for (let i = 0; i < indicators.length; i++) {
+      indicators[i].className = `w-2 h-2 rounded-full transition-colors ${
+        i === currentSlide ? 'bg-primary-600' : 'bg-neutral-300'
+      }`;
+    }
+  }
+  
+  // Função para filtrar descontos
+  function filterDescontos(categoria) {
+    let filtered = [...todosDescontos];
+    
+    if (categoria !== 'todos') {
+      filtered = todosDescontos.filter(desconto => {
+        if (categoria === 'natal-luz-2025') return desconto.categoria.toLowerCase() === 'natal luz 2025';
+        return desconto.categoria.toLowerCase() === categoria;
+      });
+    }
+    
+    updateCarouselContent(filtered);
+  }
+  
+  // Função para atualizar botões ativos
+  function updateActiveButton(activeButton) {
+    filterButtons.forEach(btn => {
+      btn.classList.remove('bg-primary-100', 'text-primary-700', 'active');
+      btn.classList.add('bg-neutral-100', 'text-secondary-700', 'dark:bg-secondary-700', 'dark:text-neutral-300');
+    });
+    
+    activeButton.classList.remove('bg-neutral-100', 'text-secondary-700', 'dark:bg-secondary-700', 'dark:text-neutral-300');
+    activeButton.classList.add('bg-primary-100', 'text-primary-700', 'active');
+  }
+  
+  // Event listeners para filtros
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter');
+      filterDescontos(filter);
+      updateActiveButton(button);
+    });
+  });
+  
+  // Event listeners para navegação
+  prevBtn.addEventListener('click', () => {
+    if (currentSlide > 0) {
+      currentSlide--;
+      updateCarousel();
+    }
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    const totalSlides = getTotalSlides();
+    if (currentSlide < totalSlides - 1) {
+      currentSlide++;
+      updateCarousel();
+    }
+  });
+  
+  // Inicializar carrossel
+  function initCarousel() {
+    createIndicators();
+    updateCarousel();
+  }
+  
+  // Auto-play
+  let autoPlayInterval;
+  function startAutoPlay() {
+    autoPlayInterval = setInterval(() => {
+      const totalSlides = getTotalSlides();
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+      } else {
+        currentSlide = 0;
+      }
+      updateCarousel();
+    }, 8000);
+  }
+  
+  function stopAutoPlay() {
+    clearInterval(autoPlayInterval);
+  }
+  
+  // Pausar auto-play ao hover
+  container.addEventListener('mouseenter', stopAutoPlay);
+  container.addEventListener('mouseleave', startAutoPlay);
+  
+  // Funcionalidade de touch/swipe para mobile
+  let startX = 0;
+  let startY = 0;
+  let isDragging = false;
+  let startTime = 0;
+  
+  container.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isDragging = true;
+    startTime = Date.now();
+    stopAutoPlay();
+  }, { passive: true });
+  
+  container.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+    const diffX = Math.abs(currentX - startX);
+    const diffY = Math.abs(currentY - startY);
+    
+    if (diffX > diffY) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+  
+  container.addEventListener('touchend', (e) => {
+    if (!isDragging) return;
+    
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
+    const diffX = startX - endX;
+    const diffY = Math.abs(startY - endY);
+    const diffTime = Date.now() - startTime;
+    
+    isDragging = false;
+    
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50 && diffTime < 300) {
+      const totalSlides = getTotalSlides();
+      
+      if (diffX > 0 && currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateCarousel();
+      } else if (diffX < 0 && currentSlide > 0) {
+        currentSlide--;
+        updateCarousel();
+      }
+    }
+    
+    setTimeout(() => {
+      startAutoPlay();
+    }, 1000);
+  }, { passive: true });
+  
+  // Redimensionar janela
+  window.addEventListener('resize', () => {
+    currentSlide = 0;
+    initCarousel();
+  });
+  
+  // Inicializar quando a página carregar
+  document.addEventListener('DOMContentLoaded', () => {
+    initCarousel();
+    startAutoPlay();
+  });
+</script>
