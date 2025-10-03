@@ -118,7 +118,11 @@ const categories = ['Gastronomia','Experiência','Parques'];
                 </a>
                 
                 {post.description && (
-                  <p class="text-neutral-600 line-clamp-3 mb-4 min-h-[4.5rem]">{post.description}</p>
+                  <div class="text-container relative">
+                    <p class="text-neutral-600 line-clamp-3 mb-1 min-h-[4.5rem] post-description">{post.description}</p>
+                    <p class="text-neutral-600 hidden full-description mb-1">{post.description}</p>
+                    <button class="read-more-btn text-primary-600 text-sm font-medium hover:text-primary-700 transition-colors">Ler mais</button>
+                  </div>
                 )}
                 {!post.description && (
                   <p class="text-neutral-600 line-clamp-3 mb-4 min-h-[4.5rem]">Descubra mais detalhes sobre este conteúdo exclusivo. Clique para ler o artigo completo e aproveitar todas as dicas e informações.</p>
@@ -158,6 +162,7 @@ const categories = ['Gastronomia','Experiência','Parques'];
     const cards = document.querySelectorAll('[data-post]');
     const categoryChips = document.querySelectorAll('.cat-chip');
     const searchInput = document.getElementById('top-search');
+    const readMoreButtons = document.querySelectorAll('.read-more-btn');
     let activeCategory = '';
     let nextChunk = 1; // primeiro chunk (0) já visível
 
@@ -207,6 +212,25 @@ const categories = ['Gastronomia','Experiência','Parques'];
       });
     });
     searchInput?.addEventListener('input', applyFilters);
+    
+    // Funcionalidade de "Ler mais" para descrições longas
+    readMoreButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const container = button.closest('.text-container');
+        const shortDesc = container.querySelector('.post-description');
+        const fullDesc = container.querySelector('.full-description');
+        
+        if (shortDesc.classList.contains('line-clamp-3')) {
+          // Expandir o texto
+          shortDesc.classList.remove('line-clamp-3');
+          button.textContent = 'Ler menos';
+        } else {
+          // Recolher o texto
+          shortDesc.classList.add('line-clamp-3');
+          button.textContent = 'Ler mais';
+        }
+      });
+    });
     
     // Função para ser executada quando o DOM estiver carregado
     function initVideoPlayers() {
