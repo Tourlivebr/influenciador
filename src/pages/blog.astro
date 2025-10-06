@@ -113,17 +113,23 @@ const categories = ['Gastronomia','Experiência','Parques'];
                   )}
                 </div>
                 
-                <a href={post.url}>
-                  <h2 class="text-xl font-bold text-neutral-800 group-hover:text-primary-600 transition-colors line-clamp-2 mb-2">{post.title}</h2>
-                </a>
+                <h2 class="text-xl font-bold text-neutral-800 transition-colors line-clamp-2 mb-2">{post.title}</h2>
                 
                 {post.description && (
-                  <div class="text-container relative">
-                    <p class="text-neutral-600 line-clamp-3 mb-1 min-h-[4.5rem] post-description">{post.description}</p>
-                    <p class="text-neutral-600 hidden full-description mb-1">{post.description}</p>
-                    <button class="read-more-btn text-primary-600 text-sm font-medium hover:text-primary-700 transition-colors">Ler mais</button>
-                  </div>
-                )}
+                    <div class="text-container relative mb-4">
+                      <p class="text-neutral-600 line-clamp-3 mb-1 min-h-[4.5rem] post-description" id={`post-description-${i}`}>{post.description}</p>
+                      <button 
+                        class="read-more-btn text-primary-600 text-sm font-medium hover:text-primary-700 transition-colors hover:underline focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded hidden"
+                        aria-expanded="false"
+                        aria-controls={`post-description-${i}`}
+                      >
+                        Ler mais
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 inline ml-1">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                      </button>
+                    </div>
+                  )}
                 {!post.description && (
                   <p class="text-neutral-600 line-clamp-3 mb-4 min-h-[4.5rem]">Descubra mais detalhes sobre este conteúdo exclusivo. Clique para ler o artigo completo e aproveitar todas as dicas e informações.</p>
                 )}
@@ -207,21 +213,45 @@ const categories = ['Gastronomia','Experiência','Parques'];
     });
     searchInput?.addEventListener('input', applyFilters);
     
+    // Verificar descrições que precisam do botão "Ler mais"
+    function checkDescriptionLength() {
+      document.querySelectorAll('.text-container').forEach(container => {
+        const description = container.querySelector('.post-description');
+        const button = container.querySelector('.read-more-btn');
+        
+        if (!description || !button) return;
+        
+        // Verificar se o texto tem mais de 3 linhas
+        const lineHeight = parseInt(window.getComputedStyle(description).lineHeight);
+        const height = description.clientHeight;
+        const lines = Math.floor(height / lineHeight);
+        
+        // Se tiver mais de 3 linhas, mostrar o botão "Ler mais"
+        if (lines >= 3 && description.scrollHeight > description.clientHeight) {
+          button.classList.remove('hidden');
+          button.setAttribute('aria-expanded', 'false');
+        } else {
+          button.classList.add('hidden');
+        }
+      });
+    }
+    
     // Funcionalidade de "Ler mais" para descrições longas
     readMoreButtons.forEach(button => {
       button.addEventListener('click', () => {
         const container = button.closest('.text-container');
         const shortDesc = container.querySelector('.post-description');
-        const fullDesc = container.querySelector('.full-description');
         
         if (shortDesc.classList.contains('line-clamp-3')) {
           // Expandir o texto
           shortDesc.classList.remove('line-clamp-3');
           button.textContent = 'Ler menos';
+          button.setAttribute('aria-expanded', 'true');
         } else {
           // Recolher o texto
           shortDesc.classList.add('line-clamp-3');
           button.textContent = 'Ler mais';
+          button.setAttribute('aria-expanded', 'false');
         }
       });
     });
@@ -281,15 +311,25 @@ const categories = ['Gastronomia','Experiência','Parques'];
           }
         });
       });
+      
+      // Verificar tamanho das descrições após carregar imagens
+      setTimeout(checkDescriptionLength, 500);
     }
 
     // Executa quando o DOM estiver carregado
-    document.addEventListener('DOMContentLoaded', initVideoPlayers);
+    document.addEventListener('DOMContentLoaded', () => {
+      initVideoPlayers();
+      checkDescriptionLength();
+    });
     
     // Executa também imediatamente caso o DOM já esteja carregado
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
       initVideoPlayers();
+      checkDescriptionLength();
     }
+    
+    // Verificar novamente quando a janela for redimensionada
+    window.addEventListener('resize', checkDescriptionLength);
   </script>
 
   <Footer />
