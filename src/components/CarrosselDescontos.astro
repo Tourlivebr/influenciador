@@ -1,27 +1,54 @@
 ---
-// Todos os descontos misturados em uma única lista
+// Lista de descontos com imagens disponíveis
 const todosDescontos = [
-  { nome: "O GRANDE DESFILE DE NATAL", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-desfilede-natal-natal-luz?bookingAgency=4795", categoria: "Natal Luz 2025" },
-  { nome: "NATIVITATEN (SHOW NO LAGO)", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-desfilede-natal-natal-luz?bookingAgency=4795", categoria: "Natal Luz 2025" },
-  { nome: "RF VISION FONDUE", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/restaurante-giratorio-rf-vision?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "SNOWLAND", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-snowland-gramado?bookingAgency=4795", categoria: "Parques" },
-  { nome: "MATRIA PARQUE DE FLORES", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-matria-parque-de-flores?bookingAgency=4795", categoria: "Parques" },
-  { nome: "RASEN BRASA SEQUÊNCIA PARRILLHEIRA", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-rasen-brasa-sequencia-parrillheira?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "VILA DA MÔNICA", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-vila-da-monica?bookingAgency=4795", categoria: "Parques" },
-  { nome: "PASSO DO LONTRA", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-passo-do-lontra?bookingAgency=4795", categoria: "Parques" },
-  { nome: "CERVEJARIA FAROL", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-cervejaria-farol?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "FONDUE BELLE ÉPOQUE", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-fondue-belle-epoque?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "RASEN BRASA FONDUE", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-rasen-brasa-fondue?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "CAFÉ COLONIAL BELLA NONNA", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-cafe-colonial-bella-nonna?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "CHÁ REAL NO CHOCOLAND", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-cha-real-no-chocoland?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "REINO DA BOÊMIA PIZZAS", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-rodizio-de-pizzas-em-gramado.-rodizio-reino-da-boemia?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "REINO DA BOÊMIA BUFFET", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-buffet-livre-em-gramado.-almoco-com-buffet-livre-e-churrasco-boemio?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "PIZZARIA LA BELLA NOTTE", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-la-bella-notte?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "PALACE CAFÉ COLONIAL", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-palace-cafe-colonial?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "JANTAR CAÇA AO TESOURO CRIAMIGOS", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-jantar-caca-ao-tesouro-criamigos?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "CAFÉ DA MANHÃ NO HOTEL CRIAMIGOS", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-hora-do-cafe-no-hote-criamigos?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "REINO DA BOÊMIA FONDUE", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-sequencia-de-fondue-em-gramado.-reino-da-boemia-restaurante-fondue?bookingAgency=4795", categoria: "Restaurantes" },
-  { nome: "BUFFET DE SOPAS CAFÉ DA BANCA", link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/buffet-de-sopas-no-cafe-da-banca?bookingAgency=4795", categoria: "Restaurantes" }
+  { 
+    nome: "RF VISION FONDUE", 
+    link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/restaurante-giratorio-rf-vision?bookingAgency=4795", 
+    categoria: "Restaurantes",
+    imagem: "/images/parksnet/parksnet-imagem-galeria-restaurante-giratorio-rf-vision-68b83e3d3202b_0.webp"
+  },
+  { 
+    nome: "SNOWLAND", 
+    link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-snowland-gramado?bookingAgency=4795", 
+    categoria: "Parques",
+    imagem: "/images/parksnet/parksnet-imagem-galeria-ingresso-snowland-gramado-67c5ecaf26e45_0.webp"
+  },
+  { 
+    nome: "REINO DA BOÊMIA BUFFET", 
+    link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-buffet-livre-em-gramado.-almoco-com-buffet-livre-e-churrasco-boemio?bookingAgency=4795", 
+    categoria: "Restaurantes",
+    imagem: "/images/parksnet/parksnet-imagem-galeria-ingresso-buffet-livre-em-gramado.-almoco-com-buffet-livre-e-churrasco-boemio-682b6e4b07fd1_0.webp"
+  },
+  { 
+    nome: "PIZZARIA LA BELLA NOTTE", 
+    link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-la-bella-notte?bookingAgency=4795", 
+    categoria: "Restaurantes",
+    imagem: "/images/parksnet/parksnet-imagem-galeria-ingresso-la-bella-notte-6849ac8cc9452_0.webp"
+  },
+  { 
+    nome: "PALACE CAFÉ COLONIAL", 
+    link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-palace-cafe-colonial?bookingAgency=4795", 
+    categoria: "Restaurantes",
+    imagem: "/images/parksnet/parksnet-imagem-galeria-ingresso-palace-cafe-colonia-6849ae14e23bf_0.webp"
+  },
+  { 
+    nome: "JANTAR CAÇA AO TESOURO CRIAMIGOS", 
+    link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-jantar-caca-ao-tesouro-criamigos?bookingAgency=4795", 
+    categoria: "Restaurantes",
+    imagem: "/images/parksnet/parksnet-imagem-galeria-ingresso-jantar-caca-ao-tesouro-criamigos-688280e1f04d5_0.webp"
+  },
+  { 
+    nome: "BLEND RESTAURANTE FONDUE", 
+    link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/ingresso-sequencia-de-fondue-em-gramado-blend-restaurante?bookingAgency=4795", 
+    categoria: "Restaurantes",
+    imagem: "/images/parksnet/parksnet-imagem-galeria-ingresso-sequencia-de-fondue-em-gramado-blend-restaurante-682b6345d2e74_0.webp"
+  },
+  { 
+    nome: "BUFFET DE SOPAS CAFÉ DA BANCA", 
+    link: "https://parksnet.com.br/passeios-e-ingressos-serra-gaucha-com-a-parksnet/buffet-de-sopas-no-cafe-da-banca?bookingAgency=4795", 
+    categoria: "Restaurantes",
+    imagem: "/images/parksnet/parksnet-imagem-galeria-buffet-de-sopas-no-cafe-da-banca-68a9d409d82b7_0.webp"
+  }
 ];
 ---
 
@@ -81,15 +108,11 @@ const todosDescontos = [
         <div class="flex-none w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 px-3" data-categoria={desconto.categoria.toLowerCase().replace(/\s+/g, '-')}>
           <div class="bg-neutral-50 dark:bg-secondary-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer" onclick={`window.open('${desconto.link}', '_blank')`}>
             <div class="relative h-48 overflow-hidden">
-              <!-- Placeholder para imagem -->
-              <div class="w-full h-full bg-gradient-to-br from-blue-100 to-green-100 dark:from-slate-700 dark:to-slate-600 flex items-center justify-center">
-                <div class="text-center">
-                  <svg class="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                  </svg>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">Imagem em breve</p>
-                </div>
-              </div>
+              <img 
+                src={desconto.imagem} 
+                alt={desconto.nome}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
               <div class="absolute top-3 left-3">
                 <span class="bg-primary-600 text-white text-xs font-medium px-2 py-1 rounded-full">
                   {desconto.categoria}
